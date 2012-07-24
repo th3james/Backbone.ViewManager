@@ -34,11 +34,10 @@ Backbone.Model is extended with 3 new methods:
   * *event* - The even to listen for
   * *callback* - Callback method on event
   Example:
+
 ```coffeescript
     post.on('update', callback)
-
     # Becomes...
-
     this.bindTo(post, 'update', callback)
 ```
 
