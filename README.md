@@ -36,7 +36,9 @@ Backbone.Model is extended with 3 new methods:
   Example:
 ```coffeescript
     post.on('update', callback)
+
     # Becomes...
+
     this.bindTo(post, 'update', callback)
 ```
 
