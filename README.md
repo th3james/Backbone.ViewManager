@@ -27,10 +27,10 @@ The `showView` calls `.close()` on the current view before inserting the new one
 ### Backbone.Model extensions
 Backbone.Model is extended with some new methods:
 
-* *bindTo* - Use this method in place of `Backbone.Events.on()`. It behaves the same as `.on()`, but keeps a reference of the binding. Takes 3 argments:
-  * *model* - The model to bind to
-  * *event* - The even to listen for
-  * *callback* - Callback method on event
+* **bindTo** - Use this method in place of `Backbone.Events.on()`. It behaves the same as `.on()`, but keeps a reference of the binding. Takes 3 argments:
+  * **model** - The model to bind to
+  * **event** - The even to listen for
+  * **callback** - Callback method on event
   Example:
 
 ```coffeescript
@@ -38,4 +38,4 @@ Backbone.Model is extended with some new methods:
   # Becomes...
   this.bindTo(post, 'update', callback)
 ```
-* *close* - This method removes the backbone view, unbinding from all events. This method is called when you by the Backbone.ViewManager on old views when swapping a new one in. You can add an optional `onClose` method to your models, if there is anything else you want to do when a view is removed.
+* **close** - This method removes the backbone view, unbinding from all events. This method is called when you by the Backbone.ViewManager on old views when swapping a new one in. You can add an optional `onClose` method to your models, if there is anything else you want to do when a view is removed.
