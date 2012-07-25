@@ -12,22 +12,20 @@ Include view\_manager.js (or .coffee) after Backbone.js but before your models.
 ### Backbone.ViewManager
 The Backbone.ViewManager object allows the management of views which are inserted into a common DOM element.
 ```coffeescript
-    # Create a new Backbone.ViewManager, passing the a CSS selector of the object you wish to insert the views into:
-    viewManager = new Backbone.ViewManager('#view-container')
-    
-    # Show a Backbone.View inside the viewManager element
-    viewManager.showView(new MyBackboneView())
+  # Create a new Backbone.ViewManager, passing the a CSS selector of the object you wish to insert the views into:
+  viewManager = new Backbone.ViewManager('#view-container')
+  
+  # Show a Backbone.View inside the viewManager element
+  viewManager.showView(new MyBackboneView())
 
-    ...
-
-    # Show a different view inside the viewManager element, cleanly removing the prior view
-    viewManager.showView(new AnotherView())
+  # Show a different view inside the viewManager element, cleanly removing the prior view
+  viewManager.showView(new AnotherView())
 ```
 
 The `showView` calls `.close()` on the current view before inserting the new one.
 
 ### Backbone.Model extensions
-Backbone.Model is extended with 3 new methods:
+Backbone.Model is extended with some new methods:
 
 * *bindTo* - Use this method in place of `Backbone.Events.on()`. It behaves the same as `.on()`, but keeps a reference of the binding. Takes 3 argments:
   * *model* - The model to bind to
@@ -36,10 +34,8 @@ Backbone.Model is extended with 3 new methods:
   Example:
 
 ```coffeescript
-    post.on('update', callback)
-    # Becomes...
-    this.bindTo(post, 'update', callback)
+  post.on('update', callback)
+  # Becomes...
+  this.bindTo(post, 'update', callback)
 ```
-
-* *unbindFromAll* - ...
-* *close* - ...
+* *close* - This method removes the backbone view, unbinding from all events. This method is called when you by the Backbone.ViewManager on old views when swapping a new one in. You can add an optional `onClose` method to your models, if there is anything else you want to do when a view is removed.
