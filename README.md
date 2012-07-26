@@ -10,7 +10,7 @@ Include view\_manager.js (or .coffee) after Backbone.js but before your models.
 
 ## Usage
 ### Backbone.Model extensions
-Backbone.Model is extended with some new methods. To prevent binding leaks, you must use the bindTo method in place of `Backbone.Events.on()`
+Backbone.Model is extended with some new methods. To prevent binding leaks, you must use the new `Backbone.Model.bindTo` method in place of `Backbone.Events.on()`
 
 * **bindTo** - Use this method in place of `Backbone.Events.on()`. It behaves the same as `.on()`, but keeps a reference of the binding. Takes 3 argments:
   * **model** - The model to bind to
