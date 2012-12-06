@@ -33,8 +33,9 @@ _.extend(Backbone.View.prototype,
 
   # Unbinds all the bindings in @bindings
   unbindFromAll: () ->
-    _.each(@bindings, (binding) ->
-      binding.model.unbind(binding.ev, binding.callback))
+    if @bindings?
+      _.each(@bindings, (binding) ->
+        binding.model.unbind(binding.ev, binding.callback))
     @bindings = []
 
   # Clean up all bindings and remove elements from DOM
