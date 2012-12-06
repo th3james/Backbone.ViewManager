@@ -32,9 +32,11 @@
       });
     },
     unbindFromAll: function() {
-      _.each(this.bindings, function(binding) {
-        return binding.model.unbind(binding.ev, binding.callback);
-      });
+      if (this.bindings != null) {
+        _.each(this.bindings, function(binding) {
+          return binding.model.unbind(binding.ev, binding.callback);
+        });
+      }
       return this.bindings = [];
     },
     close: function() {
