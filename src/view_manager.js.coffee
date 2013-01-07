@@ -4,8 +4,10 @@
 #
 # Inspired by: http://lostechies.com/derickbailey/2011/09/15/zombies-run-managing-page-transitions-in-backbone-apps/
 class Backbone.ViewManager
-  constructor: (@element) ->
-  
+  constructor: (options) ->
+    @tagName = (options.tagName if options?) || 'div'
+    @$el = $("<#{@tagName}>")
+
   # Close the current view, render the given view into @element
   showView: (view) ->
     if (@currentView)
@@ -14,11 +16,11 @@ class Backbone.ViewManager
     this.currentView = view
     this.currentView.render()
 
-    $(@element).html(this.currentView.el)
+    @$el.html(this.currentView.el)
 
   # Returns true if element is empty
   isEmpty: () ->
-    return $(@element).is(':empty')
+    return @$el.is(':empty')
 
 # Augment backbone view to add binding management and close method
 # Inspired by http://stackoverflow.com/questions/7567404/backbone-js-repopulate-or-recreate-the-view/7607853#7607853

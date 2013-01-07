@@ -28,8 +28,9 @@ Backbone.View is extended with some new methods which allow the monitoring and d
 ### Backbone.ViewManager
 Once you've updated your application to use the above methods, you can use the Backbone.ViewManager object to manage views which are inserted into a common DOM element.
 ```coffeescript
-  # Create a new Backbone.ViewManager, passing the a CSS selector of the object you wish to insert the views into:
-  viewManager = new Backbone.ViewManager('#view-container')
+  # Create a new Backbone.ViewManager, passing the tag name (in an options object) you want the rendered view to be inserted into and returned inside:
+  # If you do not provide a tagName, ViewManager defaults to creating a <div>
+  viewManager = new Backbone.ViewManager(tagName: 'div')
   
   # Show a Backbone.View inside the viewManager element
   viewManager.showView(new MyBackboneView())
